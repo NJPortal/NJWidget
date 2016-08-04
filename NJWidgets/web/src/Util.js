@@ -17,6 +17,9 @@
         child.prototype.constructor = child;
         child.base = parent.prototype;
     }
+    function getMemberDataName( optionName ) {
+        return "m" + optionName[0].toUpperCase() + optionName.substring(1);
+    }
     function pad( d ) {
         return ( d < 10 ) ? '0' + d.toString() : d.toString();
     }
@@ -39,5 +42,6 @@
     }
     util.extend = extend;
     util.pad = pad;
+    util.getMemberDataName = getMemberDataName;
     util.newObject = newObject;
 } );

@@ -6,10 +6,12 @@
     fn( nj );
 } )( this, function( nj ) {
     "use strict";
-    debugger;
-    var ColumnChart = nj.widget.chart.axesChart.columnChart;
+    var ColumnChart = nj.widget.dataWidget.chart.axisChart.columnChart;
     var options = {
-        id: "col-chart-1",
+        widgetId: "XXXX-XXXXX-XXXXX-XXXXX-XXXX-XXXXX-XXXXX-XXXXX",
+        bgColor: "#DDDDDD",
+        margin: 5,
+        borderThickness: 1,
         data: [
             {
                 color: "#ff0000",
@@ -23,6 +25,5 @@
     };
 //    var chart = nj.util.newObject( "nj.widget.chart.axesChart.columnChart", "chart", options );
     var chart = new ColumnChart( "chart", options );
-    chart.mMargin = 20;
     chart.render();
 } );

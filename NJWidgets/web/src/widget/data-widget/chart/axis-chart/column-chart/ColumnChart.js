@@ -29,14 +29,30 @@
         this.mChartWidth = this.mWidth - this.mBorderThickness;
         this.mChartHeight = this.mHeight - this.mBorderThickness;
         
-        this.mCtx.fillStyle = "#000000";
-        this.mCtx.fillRect( 0, 0, this.mWidth, this.mHeight );
         this.mCtx.fillStyle = "#ffffff";
-        this.mCtx.fillRect( this.mBorderThickness / 2, this.mBorderThickness / 2, this.mChartWidth, this.mChartHeight );
+        this.mCtx.fillRect( 0, 0, this.mWidth, this.mHeight );
+        
         this.mCtx.beginPath();
-        this.mCtx.rect( 20.5, 20.5, 100, 100 );
+        this.mCtx.rect( this.mBorderThickness / 2, this.mBorderThickness / 2, this.mChartWidth, this.mChartHeight );
         this.mCtx.strokeStyle = "#000000";
         this.mCtx.stroke();
+        
+        this.mCtx.beginPath();
+        this.mCtx.strokeStyle = "#999";
+        this.mCtx.moveTo( 50.5, 50.5 );
+        this.mCtx.lineTo( 50.5, 250 );
+        this.mCtx.stroke();
+        
+        this.mCtx.beginPath();
+        this.mCtx.strokeStyle = "#999";
+        this.mCtx.moveTo( 50.5, 250.5 );
+        this.mCtx.lineTo( 450, 250.5 );
+        this.mCtx.stroke();
+        
+//        this.mCtx.beginPath();
+//        this.mCtx.strokeStyle = "#000000";
+//        this.mCtx.rect( 20.5, 20.5, 100, 100 );
+//        this.mCtx.stroke();
     };
     ColumnChart.prototype.render = function() {
         this.init();

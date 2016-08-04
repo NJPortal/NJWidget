@@ -24,7 +24,7 @@
         var border = 2;
         var gAreaX = 0;
         var gAreaY = 0;
-        var gAreaHeight = this.mHeight;
+        var gAreaHeight = this.mAnimation.mHeight;
         var gAreaWidth = this.mWidth;
         var colWidth, colHeight, ratio, maxColHeight, gredient, largestValue;
         
@@ -32,11 +32,11 @@
         this.mCtx.fillRect( 0, 0, this.mWidth, this.mHeight );
         
         if( true ) {
-            gAreaHeight -= 40;
+//            gAreaHeight -= 40;
         }
         
         colWidth = gAreaWidth / colCnt - this.mMargin * 2;
-        maxColHeight = gAreaHeight - 25;
+        maxColHeight = gAreaHeight /*- 25*/;
         
         var largestValue = 0;
         for( var i = 0; i < dataPoints.length; i++ ) {
@@ -70,7 +70,7 @@
     };
     ColumnChart.prototype.render = function() {
         this.init();
-        this.draw();
+        this.mAnimation.animate( this );
     };
     nj.widget.chart.axesChart.columnChart = ColumnChart;
 } );

@@ -8,7 +8,7 @@
     "use strict";
     debugger;
     var ColumnChart = nj.widget.chart.axesChart.columnChart;
-    var chart = new ColumnChart( "chart", {
+    var options = {
         id: "col-chart-1",
         data: [
             {
@@ -20,7 +20,9 @@
                 ]
             }
         ]
-    } );
-    chart.mMargin = 1;
+    };
+//    var chart = nj.util.newObject( "nj.widget.chart.axesChart.columnChart", "chart", options );
+    var chart = new ColumnChart( "chart", options );
+    chart.mMargin = 20;
     chart.render();
 } );

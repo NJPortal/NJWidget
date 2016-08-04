@@ -20,6 +20,24 @@
     function pad( d ) {
         return ( d < 10 ) ? '0' + d.toString() : d.toString();
     }
+    function newObject( clazz ) {
+    	var args = Array.prototype.slice.call( arguments, 1 ),
+    	newObject = null;
+    	function fn() {
+    		fn.prototype.constructor.call( this, args );
+    	}
+    	try {
+    		clazz = eval( clazz );
+    		fn.prototype = clazz.prototype;
+    		fn.prototype.constructor = clazz;
+    		newObject = new fn( arguments );
+    	} 
+    	catch( error ) {
+    		console.error( error );
+    	}
+    	return newObject;
+    }
     util.extend = extend;
     util.pad = pad;
+    util.newObject = newObject;
 } );

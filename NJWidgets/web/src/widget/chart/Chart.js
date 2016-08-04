@@ -7,8 +7,8 @@
 } )( this, function( nj ) {
     "use strict";
     var 
-    extend = nj.util.extend,
-    Widget = nj.widget;
+        extend = nj.util.extend,
+        Widget = nj.widget;
     
     function Animation() {
         this.mActive = true;
@@ -17,20 +17,11 @@
         this.mWidth = 0;
     }
     Animation.prototype.animate = function( chart ) {
-        if( this.mActive ) {
-        	if( Math.round( this.mHeight ) == chart.mHeight ) {
-        		this.mActive = false;
-        	}
-        	this.mHeight += chart.mHeight / this.mTime;
-        	chart.draw();
-        	setTimeout( this.animate.bind( this, chart), this.mStep/this.mTime );
-        }
-        else {
-        	
-        }
+        chart.draw();
     };
     function Chart( container, options ) {
         this.mCtx = null;
+        this.mData = null;
         this.mAnimation = new Animation();
         Chart.base.constructor.call( this, container, options );
     }
@@ -41,6 +32,9 @@
         canvas.width = this.mWidth;
         this.mWrapper.appendChild( canvas );
         this.mCtx = canvas.getContext( "2d" );
+    };
+    Chart.prototype.updateData = function() {
+        this.mData = this.mOptions.data;
     };
     
     nj.widget.chart = Chart;

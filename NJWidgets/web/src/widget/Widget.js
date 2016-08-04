@@ -20,7 +20,7 @@
         this.mObjectId = Widget.getObjectId(); 
     }
     Widget.prototype.updateOptions = function() {
-        
+        this.updateData();
     };
     Widget.prototype.addWrapper = function() {
         this.mWrapper = document.createElement( "div" );

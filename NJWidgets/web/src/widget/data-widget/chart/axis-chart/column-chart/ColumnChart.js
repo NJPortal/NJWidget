@@ -18,41 +18,39 @@
         this.addWrapper();
         this.addCanvas();
     };
-    ColumnChart.prototype.draw = function() {
-        var dataPoint;
-        for( var i = 0; i < this.mData.length; i++ ) {
-            for( var j = 0; j < this.mData[ i ].dataPoints.length; j++ ) {
-                dataPoint = this.mData[ i ].dataPoints[ j ];
-            }
-        }
-        
-        this.mChartWidth = this.mWidth - this.mBorderThickness;
-        this.mChartHeight = this.mHeight - this.mBorderThickness;
-        
+    ColumnChart.prototype.drawColumn = function( x, y, width, height, fillStyle, strokeStyle ) {
+        x = /*x % 2 ? x :*/ x - 0.5;
+        y = /*y % 2 ? y :*/ y - 0.5;
+        this.mCtx.fillStyle = fillStyle;
+        this.mCtx.strokeStyle = strokeStyle;
+        this.mCtx.rect( x, y, width, height );
+        this.mCtx.stroke();
+        //this.mCtx.fill();
+    };
+    ColumnChart.prototype.cleanCanvas = function() {
         this.mCtx.fillStyle = "#ffffff";
         this.mCtx.fillRect( 0, 0, this.mWidth, this.mHeight );
-        
         this.mCtx.beginPath();
         this.mCtx.rect( this.mBorderThickness / 2, this.mBorderThickness / 2, this.mChartWidth, this.mChartHeight );
         this.mCtx.strokeStyle = "#000000";
         this.mCtx.stroke();
+    }
+    ColumnChart.prototype.draw = function() {
+        var dataPoint, columnWidth = 50, x = this.mMargin;
+        this.mChartWidth = this.mWidth - this.mBorderThickness;
+        this.mChartHeight = this.mHeight - this.mBorderThickness;
         
-        this.mCtx.beginPath();
-        this.mCtx.strokeStyle = "#999";
-        this.mCtx.moveTo( 50.5, 50.5 );
-        this.mCtx.lineTo( 50.5, 250 );
-        this.mCtx.stroke();
         
-        this.mCtx.beginPath();
-        this.mCtx.strokeStyle = "#999";
-        this.mCtx.moveTo( 50.5, 250.5 );
-        this.mCtx.lineTo( 450, 250.5 );
-        this.mCtx.stroke();
-        
-//        this.mCtx.beginPath();
-//        this.mCtx.strokeStyle = "#000000";
-//        this.mCtx.rect( 20.5, 20.5, 100, 100 );
-//        this.mCtx.stroke();
+        this.cleanCanvas();
+        this.mAxisX.draw( this.mCtx );
+        this.mAxisY.draw( this.mCtx );
+        for( var i = 0; i < this.mData.length; i++ ) {
+            for( var j = 0; j < this.mData[ i ].dataPoints.length; j++ ) {
+                dataPoint = this.mData[ i ].dataPoints[ j ];
+                this.drawColumn( x + columnWidth, 50, columnWidth, 201, "#ff0000", "#000000" );
+                x += columnWidth + this.mMargin;
+            }
+        }
     };
     ColumnChart.prototype.render = function() {
         this.init();

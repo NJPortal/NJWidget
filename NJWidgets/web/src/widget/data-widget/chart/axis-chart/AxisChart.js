@@ -23,24 +23,24 @@
     }
     extend( AxisX, Axis );
     AxisX.prototype.draw = function( ctx ) {
-        ctx.strokeStyle = "#999";
+        ctx.strokeStyle = "#ff0000";
         ctx.beginPath();
         ctx.moveTo( 50.5, 50.5 );
         ctx.lineTo( 50.5, 250 );
         ctx.stroke();
-    }
+    };
     
     function AxisY() {
         AxisX.base.constructor.call( this );
     }
     extend( AxisY, Axis );
     AxisY.prototype.draw = function( ctx ) {
-        ctx.strokeStyle = "#999";
+    	ctx.strokeStyle = "#ff0000";
         ctx.beginPath();
         ctx.moveTo( 50.5, 250.5 );
         ctx.lineTo( 450, 250.5 );
         ctx.stroke();
-    }
+    };
     
     function AxisChart( container, options ) {
         this.mAxisX = new AxisX();

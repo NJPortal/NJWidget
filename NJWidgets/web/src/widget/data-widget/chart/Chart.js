@@ -34,6 +34,7 @@
         canvas.width = this.mWidth;
         this.mWrapper.appendChild( canvas );
         this.mCtx = canvas.getContext( "2d" );
+        this.mCtx.save();
     };
     
     DataWidget.chart = Chart;

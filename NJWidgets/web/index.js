@@ -16,6 +16,7 @@
             { dataPoints: [ 10, 22, 44, 32 ] }
         ]
     },
+    //
     chart = new ColumnChart( "chart", options );
     chart.render();
 } );
